@@ -1,0 +1,8 @@
+tzdata
+langchain-google-community[calendar,gmail]
+langchain-community
+langgraph
+langchain-groq
+tavily-python
+google-auth-oauthlib
+streamlit
