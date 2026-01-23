@@ -68,7 +68,7 @@ State is maintained using thread-based conversation tracking with in-memory chec
 pip install -r requirements.txt
 GROQ_API_KEY=your_groq_api_key
 TAVILY_API_KEY=your_tavily_api_key
-
+```
 ## 🧪 Example Capabilities
 
 - Schedule meetings using natural language  
