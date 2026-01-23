@@ -1,13 +1,100 @@
-🤖 AI Chief of StaffAn intelligent, agentic workflow automation tool that acts as your personal Chief of Staff. It orchestrates Google Calendar, Gmail, and Web Search to manage your daily life using natural language, featuring a Human-in-the-Loop approval system for sensitive actions.🚀 Key FeaturesHierarchical Agent System: Built with LangGraph and LangChain, utilizing a supervisor agent to delegate tasks to specialized sub-agents (Calendar, Email, Web).Human-in-the-Loop (HITL): A robust approval mechanism that pauses execution before sensitive actions (like sending emails), allowing users to review and edit content via the UI before final approval.Natural Language Control: Schedule meetings ("Next Tuesday at 2 PM"), draft emails, and research topics using conversational English.State Persistence: Maintains conversation context and thread history, allowing for multi-turn interactions and "memory" of previous requests.Interactive UI: A clean, responsive frontend built with Streamlit that visualizes agent thought processes and handles approval interruptions seamlessly.🛠️ Tech StackCore Logic: Python, LangGraph, LangChainLLM: Groq (Qwen-32b / Llama-3) for fast inferenceFrontend: StreamlitTools & APIs:Google Calendar APIGoogle Gmail APITavily Search API📂 Project Structure.
-├── backend.py        # Core agent logic, tool definitions, and LangGraph workflow
-├── streamlit.py      # Streamlit frontend with HITL approval UI
-├── token.json        # Google OAuth credentials (auto-generated)
-├── requirements.txt  # Python dependencies
-└── .env              # Environment variables (API keys)
-⚙️ Setup & InstallationClone the repositorygit clone [https://github.com/yourusername/ai-chief-of-staff.git](https://github.com/yourusername/ai-chief-of-staff.git)
-cd ai-chief-of-staff
-Install Dependenciespip install -r requirements.txt
-Environment VariablesCreate a .env file in the root directory and add your API keys:GROQ_API_KEY=your_groq_api_key
+# 🤖 AI Chief of Staff
+
+An intelligent, agentic workflow automation system that acts as a personal **AI Chief of Staff**. This application orchestrates Google Calendar, Gmail, and Web Search using natural language commands, while incorporating a **Human-in-the-Loop (HITL)** approval mechanism for sensitive actions such as email sending. Built using **LangChain**, **LangGraph**, and **Streamlit**, the project demonstrates real-world agent orchestration, tool delegation, and human oversight in agentic AI systems.
+
+---
+
+## 🚀 Key Features
+
+- **Hierarchical Agent Architecture**  
+  Supervisor–worker agent pattern implemented with LangGraph to coordinate multiple specialized agents.
+
+- **Human-in-the-Loop (HITL) Approval**  
+  Sensitive actions like email sending require explicit user review, editing, and approval before execution.
+
+- **Natural Language Task Execution**  
+  Schedule meetings, draft emails, and retrieve web information using conversational English.
+
+- **Interactive Streamlit Interface**  
+  Real-time agent streaming, execution status, and approval workflows through a clean UI.
+
+---
+
+## 🧠 System Architecture
+
+The system follows a multi-agent design where a central Supervisor Agent interprets user intent and delegates tasks to specialized sub-agents:
+
+- 📅 **Calendar Agent** – Manages Google Calendar events  
+- 📧 **Email Agent** – Drafts and sends Gmail messages with HITL safeguards  
+- 🔍 **Web Agent** – Retrieves real-time information using Tavily search  
+
+State is maintained using thread-based conversation tracking with in-memory checkpointing for resumable execution.
+
+---
+
+## 🛠️ Tech Stack
+
+- Python 3.9+
+- LangChain
+- LangGraph
+- Streamlit
+- Google Calendar API
+- Gmail API
+- Groq LLM
+- Tavily Search API
+- python-dotenv
+
+---
+
+## 📁 Project Structure
+├── backend.py # Agent logic, tools, workflows, HITL integration
+├── streamlit.py # Streamlit UI, streaming responses, approval interface
+├── .env # Environment variables (not committed)
+├── credentials.json # Google OAuth credentials
+├── token.json # Generated OAuth token
+└── README.md
+## ⚙️ Setup Instructions
+
+### Prerequisites
+
+- Python 3.9 or higher  
+- Google Cloud project with Gmail and Calendar APIs enabled  
+- OAuth credentials file (`credentials.json`)  
+- Groq and Tavily API keys  
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+GROQ_API_KEY=your_groq_api_key
 TAVILY_API_KEY=your_tavily_api_key
-Google OAuth SetupEnable the Calendar API and Gmail API in your Google Cloud Console.Download your credentials.json file and place it in the root folder.Run the script once to generate the token.json file (it will open a browser for authentication).Run the Applicationstreamlit run streamlit.py
-📸 UsageStart the App: Open the local URL provided by Streamlit (usually http://localhost:8501).Enter a Command:"Schedule a meeting with the design team next Tuesday at 2pm for 1 hour, and send a mail to arjit@example.com to remind him about the review."Review & Approve:The agent will schedule the meeting automatically.The agent will pause and show you a draft of the email.Edit the subject or body if needed directly in the UI, then click "Approve & Continue".🤝 ContributingContributions are welcome! Please feel free to submit a Pull Request.📄 LicenseThis project is licensed under the MIT License.
+
+## 🧪 Example Capabilities
+
+- Schedule meetings using natural language  
+- Draft and send emails with human approval  
+- Generate daily briefings from calendar, email, and web data  
+- Perform real-time web searches  
+
+---
+
+## 🔐 Human-in-the-Loop Safety
+
+The application enforces explicit human approval to prevent unintended actions, allow manual edits to generated content, and ensure transparency and control over autonomous agent behavior.
+
+---
+
+## 📌 Use Cases
+
+- Agentic AI experimentation  
+- Workflow automation prototypes  
+- LangGraph / LangChain reference implementation  
+- Human–AI collaboration systems  
+
+---
+
+## 📜 License
+
+This project is intended for educational and experimental purposes.  
+Ensure compliance with Google API usage policies before deploying in production.
+
